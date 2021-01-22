@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,jsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**"]
+  },
   "scripts": {
     "test": "jest --detectOpenHandles",
     "dev": "nodemon server.js",
