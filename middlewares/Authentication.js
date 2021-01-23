@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
             })
         } else {
             const decoded = verifyToken(token)
-            console.log(decoded)
+            // console.log(decoded)
             req.loggedInUser = decoded
             const user = await User.findOne({_id: decoded.id})
             if (user) {
