@@ -49,9 +49,10 @@ beforeAll((done) => {
   })
 
 })
-afterEach(async (done) => {
+afterAll(async (done) => {
   await db.dropCollection("users")
   await db.dropCollection("communities")
+  await mongoose.disconnect()
   done()
 })
 

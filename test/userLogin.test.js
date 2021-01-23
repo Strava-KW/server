@@ -25,7 +25,7 @@ beforeAll((done) => {
     user
       .save()
       .then(result => {
-        access_token = jwt.sign({_id: result._id, email: result.email, role: result.role, communityId: result.communityId}, "rahasiaeuy")
+        access_token = jwt.sign({_id: result._id, email: result.email, role: result.role, communityId: result.communityId}, process.env.SECRET_JWT)
         done()
       })
   })
@@ -34,8 +34,9 @@ beforeAll((done) => {
   })
 
 })
-afterAll((done) => {
+afterAll(async (done) => {
   await db.dropCollection("users")
+  await mongoose.disconnect()
   done()
 })
 

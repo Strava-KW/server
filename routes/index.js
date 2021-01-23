@@ -4,7 +4,7 @@ const UserRouter = require('./userRouter')
 const CommunityRouter = require('./communityRouter')
 const Authentication = require('../middlewares/Authentication')
 
-router.use('/', UserRouter)
+router.use('/users', UserRouter)
 
 router.use(Authentication)
 router.use('/community', CommunityRouter)

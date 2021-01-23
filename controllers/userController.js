@@ -1,45 +1,91 @@
-const User = require('../models/user')
-const { hashPassword } = require('../helpers/bcrypt')
+const User = require('../models/User')
+// const { hashPassword } = require('../helpers/bcrypt')
 const { checkPassword } = require('../helpers/bcrypt')
 const { createToken } = require('../helpers/jwt')
 
 class UserController {
     static register(req, res, next) {
-        const securePassword = hashPassword(req.body.password)
         const user = new User({
             fullname: req.body.fullname,
             email: req.body.email,
-            password: securePassword,
+            password: req.body.password,
             history: [],
-            totalrange: 0,
+            totalRange: 0,
             role: null,
-            communityName: null
+            communityId: null
         })
         user
         .save()
         .then(data => {
-            console.log(data)
+            res.status(201).json({
+                fullname: data.fullname,
+                email: data.email,
+                _id: data._id
+            })
         })
         .catch(err => {
-            console.log(err)
+            next(err)
         })
     }
 
     static login(req, res, next) {
-        User.findOne({email: req.body.email}, function(err, result) {
-            if (err) {
-                console.log(err)
-            } else {
-                if(checkPassword(req.body.password, result.password)) {
-                    const obj = {
-                        id: result._id,
-                        fullname: result.fullname,
-                        email: result.email
+        User.findOne({email: req.body.email})
+            .exec()
+            .then(result => {
+                if (result) {
+                    console.log("get people")
+                    if (checkPassword(req.body.password, result.password)){
+                        let obj = {
+                            id: result._id,
+                            email: result.email,
+                            role: result.role,
+                            communityId: result.communityId
+                        }
+                        res.status(200).json({access_token: createToken(obj)})
+                        console.log("checked pass")
                     }
-                    res.json({token: createToken(obj), id: obj.id, fullname: obj.fullname, email: obj.email})
+                    else {
+                        console.log("invalid pass")
+                        throw {
+                            status: 401,
+                            message: "Invalid email/password"
+                        }
+                        
+                    }
                 }
-            }
+                else {
+                    console.log("invalid email")
+                    throw {
+                        status: 401,
+                        message: "Invalid email/password"
+                    }
+                }
+            })
+            .catch(err => {
+                next(err)
+            })
+    }
+
+    static getAllUser(req, res, next) {
+        User.find()
+        .exec()
+        .then(data => {
+            res.json(data)
         })
+        .catch(err => {
+            res.json(err)
+        })
+    }
+
+    static deleteUser (req, res, next) {
+        User.findOneAndDelete({_id: req.params.userId})
+            .exec()
+            .then(_ => {
+                res.status(200).json("deleted")
+            })
+            .catch(err => {
+                next(err)
+            })
     }
 }
 module.exports = UserController

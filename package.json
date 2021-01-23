@@ -6,9 +6,11 @@
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
-    "collectCoverageFrom": ["**/*.{js,jsx}",
-    "!**/node_modules/**",
-    "!**/vendor/**"]
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ]
   },
   "scripts": {
     "test": "jest --detectOpenHandles",

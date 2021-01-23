@@ -15,8 +15,9 @@ beforeAll(done => {
     })
 })
 
-afterAll((done) => {
+afterAll(async (done) => {
   await db.dropCollection("users")
+  await mongoose.disconnect()
   done()
 })
 
@@ -60,8 +61,8 @@ describe("Register User /users/register", () => {
       .end((err, res) => {
         const { body, status } = res
         if(err) return done(err)
-        expect(status).toBe(401)
-        expect(body).toHaveProperty("message", "Fullname should not be empty")
+        expect(status).toBe(400)
+        expect(body).toHaveProperty("message", ["Fullname should not be empty"])
         done() 
       })
     })
