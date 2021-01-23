@@ -5,7 +5,8 @@ const { Schema } = mongoose
 const communitySchema = new Schema({
   name: {
     type: String,
-    required: [true, "Community name should not be empty"]
+    required: [true, "Community name should not be empty"],
+    unique: true
   },
   members: Array,
   waitingList: Array,

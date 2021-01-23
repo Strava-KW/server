@@ -1,5 +1,6 @@
 const Community = require('../models/Community')
 const User = require('../models/User')
+const Event = require('../models/Event')
 
 class CommunityController {
 
@@ -22,7 +23,9 @@ class CommunityController {
                 community
                 .save()
                 .then(data => {
-                    res.status(200).json(data)
+                    res.status(201).json({
+                        communityName: data.name 
+                    })
                     req.loggedInUser.communityId = data._id
                     return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id}, {new: true, useFindAndModify: false})
                     .exec()
@@ -36,19 +39,40 @@ class CommunityController {
             })
     }
    
-
-    static showCommunity(req, res, next) {
-        Community.find({}, function(err, result) {
-            if(err){
+    static findOne (req, res, next) {
+        User.findOne({_id: req.loggedInUser.id})
+            .exec()
+            .then(data => {
+                if (data.communityId){
+                    return Community.findOne ({_id: data.communityId})
+                    .exec()
+                }
+                else {
+                    return Community.find()
+                    .exec()
+                }
+            })
+            .then(data => {
+                res.status(200).json(data)
+            })
+            .catch(err => {
                 next(err)
-            } else {
-                res.status(200).json(result)
-            }
-        })
+            })
     }
+
+    // static showCommunity(req, res, next) {
+    //     Community.find({}, function(err, result) {
+    //         if(err){
+    //             next(err)
+    //         } else {
+    //             res.status(200).json(result)
+    //         }
+    //     })
+    // }
 
     static joinCommunity (req, res, next) {
         let chosenCommunity
+        let waitingUser;
         Community.findOne({_id: req.params.communityId})
             .exec()
             .then(data => {
@@ -58,6 +82,7 @@ class CommunityController {
 
             })
             .then (data => {
+                waitingUser = data
                 chosenCommunity.waitingList = chosenCommunity.waitingList.concat({
                     _id: data._id,
                     email: data.email,
@@ -69,7 +94,9 @@ class CommunityController {
                     .exec()
             })
             .then(data => {
-                res.status(200).json(data)
+                res.status(200).json({
+                    message: `${waitingUser.fullname} successfully join the community`
+                })
             })
             .catch(err => {
                 next(err)
@@ -155,12 +182,83 @@ class CommunityController {
                 next(err)
             })
     }
-    static deleteCommunity (req, res, next) {
-        Community.findOneAndDelete({_id: req.params.communityId}, {useFindAndModify: false})
+
+    // static deleteCommunity (req, res, next) {
+    //     Community.findOneAndDelete({_id: req.params.communityId}, {useFindAndModify: false})
+    //         .exec()
+    //         .then(data => {
+    //             if (data) {
+    //                 res.status(200).json("deleted")
+    //             }
+    //             else {
+    //                 throw {
+    //                     status: 404,
+    //                     message: "Data not found"
+    //                 }
+    //             }
+    //         })
+    //         .catch(err => {
+    //             next(err)
+    //         })
+    // }
+   
+    static createEvent (req, res, next) {
+        let event;
+        const newEvent = new Event({
+            location: req.body.location,
+            date: req.body.date,
+            time: req.body.time,
+            hashed: req.body.location
+        })
+        newEvent
+        .save()
+        .then(data => {
+            event = data
+            return User.findOne({_id: req.loggedInUser.id})
+                .exec()
+        })
+        .then(data => {
+            return Community.findOne({_id: data.communityId})
+                .exec()
+        })
+        .then(data => {
+            let events = data.events.concat(event)
+            return Community.findOneAndUpdate({_id: data.id}, {events: events}, {useFindAndModify: false})
+            .exec()
+        })
+        .then(_ => {
+            res.status(201).json({
+                message: "Event created"
+            })
+        })
+        .catch(err => {
+            next(err)
+        })
+
+    }
+
+    static deleteEvent (req, res, next) {
+        // cari user dengan loggedIn id
+        // cari community dengan hasil balikan communityId
+        // cari apakah di community tersebut ada event dengan id event
+        // jika ada, maka event dihilangkan dari array event
+        // event dihilangkan dari tabel event
+        User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
-                if (data) {
-                    res.status(200).json("deleted")
+                return Community.findOne({_id: data.communityId})
+                    .exec()
+            })
+            .then(data => {
+                let selectedEvent = data.events.filter(event => {
+                    return event._id.toString() === req.params.eventId
+                })
+                if (selectedEvent.length) {
+                    let events = data.events.filter(event => {
+                        return event._id.toString() !== req.params.eventId
+                    })
+                    return Community.findOneAndUpdate({_id: data._id}, {events: events}, {useFindAndModify: false})
+                        .exec()
                 }
                 else {
                     throw {
@@ -169,36 +267,18 @@ class CommunityController {
                     }
                 }
             })
+            .then(_ => {
+                return Event.findOneAndDelete({_id: req.params.eventId})
+                    .exec()
+            })
+            .then(_ => {
+                res.status(200).json("event deleted")
+            })
             .catch(err => {
                 next(err)
             })
     }
-   
-    static createEvent (req, res, next) {
-        let chosenCommunity;
-        let user;
-        User.findOne({_id: req.loggedInUser.id})
-            .exec()
-            .then(data => {
-                user = data
-                return Community.findOne({_id: data.communityId})
-                .exec()
-            })
-            .then(data => {
-                chosenCommunity = data
-                let event = {
-                    name: req.body.name,
-                    date: req.body.date,
-                    time: req.body.time
-                }
-                let events = data.events.concat(event)
-                return Community.findOneAndUpdate({_id: user.communityId}, {events: events}, {new: true, useFindAndModify: false})
-            })
-            .then(_ => {
-                res.status(201).json("Data event berhasil ditambahkan")
-            })
 
-    }
 
 }
 module.exports = CommunityController

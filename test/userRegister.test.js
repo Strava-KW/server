@@ -5,7 +5,7 @@ const db = mongoose.connection
 
 
 beforeAll(done => {
-  const url = "mongodb+srv://strava:strava123@cluster0.jds7c.mongodb.net/Testing?retryWrites=true&w=majority"
+  const url = "mongodb://localhost:27017/Testing"
   mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(_ => {
       done()
@@ -17,7 +17,7 @@ beforeAll(done => {
 
 afterAll(async (done) => {
   await db.dropCollection("users")
-  await mongoose.disconnect()
+  // await mongoose.disconnect()
   done()
 })
 

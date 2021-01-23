@@ -1,5 +1,4 @@
 const User = require('../models/User')
-// const { hashPassword } = require('../helpers/bcrypt')
 const { checkPassword } = require('../helpers/bcrypt')
 const { createToken } = require('../helpers/jwt')
 
@@ -54,7 +53,6 @@ class UserController {
                     }
                 }
                 else {
-                    console.log("invalid email")
                     throw {
                         status: 401,
                         message: "Invalid email/password"
@@ -66,26 +64,26 @@ class UserController {
             })
     }
 
-    static getAllUser(req, res, next) {
-        User.find()
-        .exec()
-        .then(data => {
-            res.json(data)
-        })
-        .catch(err => {
-            res.json(err)
-        })
-    }
+    // static getAllUser(req, res, next) {
+    //     User.find()
+    //     .exec()
+    //     .then(data => {
+    //         res.json(data)
+    //     })
+    //     .catch(err => {
+    //         res.json(err)
+    //     })
+    // }
 
-    static deleteUser (req, res, next) {
-        User.findOneAndDelete({_id: req.params.userId})
-            .exec()
-            .then(_ => {
-                res.status(200).json("deleted")
-            })
-            .catch(err => {
-                next(err)
-            })
-    }
+    // static deleteUser (req, res, next) {
+    //     User.findOneAndDelete({_id: req.params.userId})
+    //         .exec()
+    //         .then(_ => {
+    //             res.status(200).json("deleted")
+    //         })
+    //         .catch(err => {
+    //             next(err)
+    //         })
+    // }
 }
 module.exports = UserController
