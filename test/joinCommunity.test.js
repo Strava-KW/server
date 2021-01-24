@@ -97,6 +97,36 @@ afterAll (async (done) => {
 
 describe ("Success join community", () => {
   describe ("User has no role", () => {
-    test("")
+    test("Success join", done => {
+      request(app)
+        .patch(`/community/${communityIdSelected}`)
+        .set("access_token", access_token_userNoRole)
+        .end((err, res) => {
+          const { body, status } = res
+          if (err) return done (err)
+          // console.log(communitySelected)
+          // console.log(userSelected)
+          expect(status).toBe(200)
+          expect(body).toHaveProperty("message", "Agnes request to join community has been sent")
+          done()
+        })
+    })
+  })
+})
+
+describe ("Failed to join community", () => {
+  describe("User has role", () => {
+    test("Failed", done => {
+      request(app)
+        .patch(`/community/${communityIdSelected}`)
+        .set("access_token", access_token_userWaiting)
+        .end((err, res) => {
+          const { body, status } = res
+          if (err) return done (err)
+          expect(status).toBe(401)
+          expect(body).toHaveProperty("message", "You are not authorized to create or join community")
+          done()
+        })
+    })
   })
 })

@@ -43,13 +43,16 @@ class CommunityController {
         User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
-                if (data.communityId){
+                if (data.role === "admin" || data.role === "member"){
                     return Community.findOne ({_id: data.communityId})
                     .exec()
                 }
-                else {
+                else if (data.role === null) {
                     return Community.find()
                     .exec()
+                }
+                else {
+                    return {message: "Your request for join community has been sent"}
                 }
             })
             .then(data => {
@@ -95,7 +98,7 @@ class CommunityController {
             })
             .then(data => {
                 res.status(200).json({
-                    message: `${waitingUser.fullname} successfully join the community`
+                    message: `${waitingUser.fullname} request to join community has been sent`
                 })
             })
             .catch(err => {
@@ -141,7 +144,9 @@ class CommunityController {
                 return Community.findOneAndUpdate({_id: req.loggedInUser.communityId}, {waitingList: waitingList, members: members}, {new: true, useFindAndModify: false})
             })
             .then(data => {
-                res.status(200).json(data)
+                res.status(200).json({
+                    message: "The member has been approved"
+                })
             })
             .catch(err => {
                 next(err)
@@ -176,7 +181,9 @@ class CommunityController {
                 return Community.findOneAndUpdate({_id: req.loggedInUser.communityId}, {waitingList: waitingList}, {new: true, useFindAndModify: false})
             })
             .then(data => {
-                res.status(200).json(data)
+                res.status(200).json({
+                    message: "The member has been rejected"
+                })
             })
             .catch(err => {
                 next(err)
@@ -205,6 +212,7 @@ class CommunityController {
     static createEvent (req, res, next) {
         let event;
         const newEvent = new Event({
+            name: req.body.name,
             location: req.body.location,
             date: req.body.date,
             time: req.body.time,
@@ -278,7 +286,5 @@ class CommunityController {
                 next(err)
             })
     }
-
-
 }
 module.exports = CommunityController
