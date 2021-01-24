@@ -8,6 +8,7 @@ const jwt = require('jsonwebtoken')
 let access_token_userNoRole;
 let access_token_userWaiting;
 let access_token_admin;
+let access_token_deleted;
 
 beforeAll((done) => {
   const url = "mongodb://localhost:27017/Testing"
@@ -48,6 +49,15 @@ beforeEach((done) => {
     role: "admin",
     communityId: 1234
   })
+  const userDeleted = new User({
+    fullname: "Robby",
+    email: "robby@mail.com",
+    password: "qweqwe",
+    history: [],
+    totalRange: 0,
+    role: null,
+    communityId: null
+  })
 
   userNoRole
     .save()
@@ -63,7 +73,19 @@ beforeEach((done) => {
     })
     .then(data => {
       access_token_admin = jwt.sign({id: data._id, email: data.email, role: data.role, communityId: data.communityId}, process.env.SECRET_JWT)
+      return userDeleted
+      .save()
+    })
+    .then(data => {
+      access_token_deleted = jwt.sign({id: data._id, email: data.email, role: data.role, communityId: data.communityId}, process.env.SECRET_JWT)
+      return User.findOneAndDelete({email: "robby@mail.com"})
+      .exec()
+    })
+    .then(_=> {
       done()
+    })
+    .catch(err => {
+      done(err)
     })
 })
 
@@ -160,9 +182,27 @@ describe ("Create community", () => {
           done()
         })
     })
-    test("User has waiting role", done => {
+    test("User does not sign in", done => {
       request(app)
         .post('/community/')
+        .send({
+          name: "Lalala",
+          members: [],
+          waitingList: [],
+          events: []
+        })
+        .end((err, res) => {
+          const { body, status } = res
+          if (err) return done (err)
+          expect(status).toBe(401)
+          expect(body).toHaveProperty("message", "Please login first")
+          done()
+        })
+    })
+    test("User is not in database", done => {
+      request(app)
+        .post('/community/')
+        .set("access_token", access_token_deleted)
         .send({
           name: "Lalala",
           members: [],

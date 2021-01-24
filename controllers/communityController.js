@@ -144,7 +144,9 @@ class CommunityController {
                 return Community.findOneAndUpdate({_id: req.loggedInUser.communityId}, {waitingList: waitingList, members: members}, {new: true, useFindAndModify: false})
             })
             .then(data => {
-                res.status(200).json(data)
+                res.status(200).json({
+                    message: "The member has been approved"
+                })
             })
             .catch(err => {
                 next(err)
