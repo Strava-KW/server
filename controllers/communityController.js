@@ -181,7 +181,9 @@ class CommunityController {
                 return Community.findOneAndUpdate({_id: req.loggedInUser.communityId}, {waitingList: waitingList}, {new: true, useFindAndModify: false})
             })
             .then(data => {
-                res.status(200).json(data)
+                res.status(200).json({
+                    message: "The member has been rejected"
+                })
             })
             .catch(err => {
                 next(err)
@@ -210,6 +212,7 @@ class CommunityController {
     static createEvent (req, res, next) {
         let event;
         const newEvent = new Event({
+            name: req.body.name,
             location: req.body.location,
             date: req.body.date,
             time: req.body.time,

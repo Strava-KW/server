@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.89% </span>
+                <span class="strong">59.21% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/76</span>
+                <span class='fraction'>45/76</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">35.71% </span>
+                <span class="strong">42.86% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/14</span>
+                <span class='fraction'>6/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.89% </span>
+                <span class="strong">59.21% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/76</span>
+                <span class='fraction'>45/76</span>
             </div>
         
             
@@ -343,7 +343,9 @@
 <a name='L284'></a><a href='#L284'>284</a>
 <a name='L285'></a><a href='#L285'>285</a>
 <a name='L286'></a><a href='#L286'>286</a>
-<a name='L287'></a><a href='#L287'>287</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -506,27 +508,29 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -794,12 +798,12 @@ class CommunityController {
                 let onWaitingList = chosenCommunity.waitingList.filter(user =&gt; {
                     return user._id.toString() === req.params.userId
                 })
-                <span class="missing-if-branch" title="else path not taken" >E</span>if (onWaitingList.length) {
+                if (onWaitingList.length) {
                     return User.findOneAndUpdate({_id: req.params.userId}, {role: null, communityId: null}, {new: true, useFindAndModify: false})
                     .exec()
                 }
                 else {
-<span class="cstat-no" title="statement not covered" >                    throw {</span>
+                    throw {
                         status: 401,
                         message: "User is not on the waiting list/ already a member"
                     }
@@ -812,7 +816,9 @@ class CommunityController {
                 return Community.findOneAndUpdate({_id: req.loggedInUser.communityId}, {waitingList: waitingList}, {new: true, useFindAndModify: false})
             })
             .then(data =&gt; {
-                res.status(200).json(data)
+                res.status(200).json({
+                    message: "The member has been rejected"
+                })
             })
             .catch(err =&gt; {
                 next(err)
@@ -922,7 +928,7 @@ module.exports = CommunityController</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Jan 24 2021 16:19:44 GMT+0700 (Western Indonesia Time)
+                at Sun Jan 24 2021 16:25:37 GMT+0700 (Western Indonesia Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

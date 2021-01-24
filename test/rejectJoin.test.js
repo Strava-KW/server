@@ -145,7 +145,7 @@ describe("Reject community", () => {
           const { body, status } = res
           if (err) return done (err)
           expect(status).toBe(200)
-          expect(body).toHaveProperty("message", "The member has been approved")
+          expect(body).toHaveProperty("message", "The member has been rejected")
           done()
         })
 
