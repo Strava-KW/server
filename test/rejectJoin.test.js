@@ -135,11 +135,11 @@ afterAll (async (done) => {
 })
 
 
-describe("Approve community", () => {
+describe("Reject community", () => {
   describe("Success", () => {
-    test("Success join", done => {
+    test("reject join", done => {
       request(app)
-        .put(`/community/approval/${waitingUser}`) // ganti userId
+        .patch(`/community/approval/${waitingUser}`) // ganti userId
         .set("access_token", access_token_admin)
         .end((err, res) => {
           const { body, status } = res
@@ -152,9 +152,9 @@ describe("Approve community", () => {
     })
   })
   describe("Failed", () => {
-    test("Approved by non-admin", done => {
+    test("Reject by non-admin", done => {
       request(app)
-        .put(`/community/approval/${waitingUser}`) // 
+        .patch(`/community/approval/${waitingUser}`) // 
         .set("access_token", access_token_noadmin)
         .end((err, res) => {
           const { body, status } = res
@@ -166,7 +166,7 @@ describe("Approve community", () => {
     })
     test("Selected user already a member", done => {
       request(app)
-        .put(`/community/approval/${member._id}`) // ganti userId
+        .patch(`/community/approval/${member._id}`) // ganti userId
         .set("access_token", access_token_admin)
         .end((err, res) => {
           const { body, status } = res
