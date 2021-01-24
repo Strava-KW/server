@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
       if (data.role === null || data.role === "waiting") {
         throw {
           status: 401,
-          message: "You are not authorized to create or join community"
+          message: "You are not authorized to create event"
         }
       }
       else {

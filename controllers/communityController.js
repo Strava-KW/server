@@ -43,13 +43,16 @@ class CommunityController {
         User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
-                if (data.communityId){
+                if (data.role === "admin" || data.role === "member"){
                     return Community.findOne ({_id: data.communityId})
                     .exec()
                 }
-                else {
+                else if (data.role === null) {
                     return Community.find()
                     .exec()
+                }
+                else {
+                    return {message: "Your request for join community has been sent"}
                 }
             })
             .then(data => {
@@ -95,7 +98,7 @@ class CommunityController {
             })
             .then(data => {
                 res.status(200).json({
-                    message: `${waitingUser.fullname} successfully join the community`
+                    message: `${waitingUser.fullname} request to join community has been sent`
                 })
             })
             .catch(err => {
@@ -278,7 +281,5 @@ class CommunityController {
                 next(err)
             })
     }
-
-
 }
 module.exports = CommunityController

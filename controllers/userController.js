@@ -64,6 +64,42 @@ class UserController {
             })
     }
 
+    static getProfile (req, res, next) {
+        User.findOne({_id: req.loggedInUser.id})
+            .exec()
+            .then(data => {
+                res.status(200).json({
+                    _id: data._id,
+                    fullname: data.fullname,
+                    email: data.email,
+                    communityId: data.communityId,
+                    history: data.history,
+                    role: data.role
+                })
+            })
+            .catch(err => {
+                next(err)
+            })
+    }
+
+    static pushToHistory (req, res, next) {
+        User.findOne ({_id: req.loggedInUser.id})
+            .exec()
+            .then(data => {
+                let history = data.history.concat({date: req.body.date, distance: req.body.distance})
+                let totalRange = data.totalRange + Number(req.body.distance)
+                return User.findOneAndUpdate({_id: req.loggedInUser.id}, {history: history, totalRange: totalRange}, {useFindAndModify: false})
+                    .exec()
+            })
+            .then(_ => {
+                res.status(200).json({
+                    message: "History and total range successfully updated"
+                })
+            })
+            .catch(err => {
+                next(err)
+            })
+    }
     // static getAllUser(req, res, next) {
     //     User.find()
     //     .exec()
