@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>0/14</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -75,50 +75,50 @@
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express')
-const router = express.Router()
-const CommunityController = require('../controllers/communityController')
-const AuthorizationCreateJoin = require('../middlewares/AuthorizationCreateJoin')
-const AuthorizationApproveMember = require('../middlewares/AuthorizeApproveMember')
-const AuthorizationCreateEvent = require('../middlewares/AuthorizationCreateEvent')
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = <span class="cstat-no" title="statement not covered" >require('express')</span>
+const router = <span class="cstat-no" title="statement not covered" >express.Router()</span>
+const CommunityController = <span class="cstat-no" title="statement not covered" >require('../controllers/communityController')</span>
+const AuthorizationCreateJoin = <span class="cstat-no" title="statement not covered" >require('../middlewares/AuthorizationCreateJoin')</span>
+const AuthorizationApproveMember = <span class="cstat-no" title="statement not covered" >require('../middlewares/AuthorizeApproveMember')</span>
+const AuthorizationCreateEvent = <span class="cstat-no" title="statement not covered" >require('../middlewares/AuthorizationCreateEvent')</span>
 &nbsp;
-router.post('/', AuthorizationCreateJoin ,CommunityController.addCommunity)
+<span class="cstat-no" title="statement not covered" >router.post('/', AuthorizationCreateJoin ,CommunityController.addCommunity)</span>
 // router.get('/', CommunityController.showCommunity)
-router.get('/community', CommunityController.findOne)
+<span class="cstat-no" title="statement not covered" >router.get('/community', CommunityController.findOne)</span>
 // router.delete('/:communityId', CommunityController.deleteCommunity)
-router.patch('/:communityId', AuthorizationCreateJoin ,CommunityController.joinCommunity)
-router.put('/approval/:userId', AuthorizationApproveMember,CommunityController.approveWaitingList)
-router.patch('/approval/:userId', AuthorizationApproveMember,CommunityController.rejectWaiting)
-router.post('/events/', CommunityController.createEvent)
-router.delete('/events/:eventId', CommunityController.deleteEvent)
+<span class="cstat-no" title="statement not covered" >router.patch('/:communityId', AuthorizationCreateJoin ,CommunityController.joinCommunity)</span>
+<span class="cstat-no" title="statement not covered" >router.put('/approval/:userId', AuthorizationApproveMember,CommunityController.approveWaitingList)</span>
+<span class="cstat-no" title="statement not covered" >router.patch('/approval/:userId', AuthorizationApproveMember,CommunityController.rejectWaiting)</span>
+<span class="cstat-no" title="statement not covered" >router.post('/events/', CommunityController.createEvent)</span>
+<span class="cstat-no" title="statement not covered" >router.delete('/events/:eventId', CommunityController.deleteEvent)</span>
 &nbsp;
 &nbsp;
-module.exports = router</pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >module.exports = router</span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat Jan 23 2021 18:26:04 GMT+0700 (Western Indonesia Time)
+                at Sun Jan 24 2021 09:22:51 GMT+0700 (Western Indonesia Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
