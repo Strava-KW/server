@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Community = require("../models/Community")
 const { checkPassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 
@@ -62,6 +63,66 @@ class UserController {
       });
   }
 
+  static trackHistory (req, res, next) {
+    let userCommunity
+    User.findOne({_id: req.loggedInUser.id})
+      .exec()
+      .then(data => {
+        let history = data.history.concat({
+          distance: req.body.distance,
+          date: req.body.date
+        })
+        let track = data.totalRange + Number(req.body.distance)
+        userCommunity = data.communityId
+
+        return User.findOneAndUpdate({_id: req.loggedInUser.id}, {history: history, totalRange: track}, {useFindAndModify: false})
+          .exec()
+      })
+      .then(data => {
+        if (userCommunity) {
+          return Community.findOne({_id: userCommunity})
+            .exec()
+        }
+      })
+      .then(data => {
+        let members = data.members.map(member => {
+          if (member._id === req.loggedInUser.id){
+            return {
+              _id: member._id,
+              email: member.email,
+              fullname: member.fullname,
+              totalRange: member.totalRange + Number(req.body.distance),
+              role: member.role
+            }
+          }
+          else {
+            return member
+          }
+        })
+
+        return Community.findOneAndUpdate({_id: data._id}, {members: members}, {useFindAndModify: false})
+          .exec()
+      })
+      .then(_ => {
+        res.status(200).json({
+          message: "Track history added successfully"
+        })
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
+
+  static getProfile (req, res, next) {
+    User.findOne({_id: req.loggedInUser.id})
+      .exec()
+      .then(data => {
+        res.status(200).json(data)
+      })
+      .catch(err => {
+        next(err)
+      })
+  }
   // static getAllUser(req, res, next) {
   //     User.find()
   //     .exec()

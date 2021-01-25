@@ -7,13 +7,13 @@ const AuthorizationCreateEvent = require('../middlewares/AuthorizationCreateEven
 
 router.post('/', AuthorizationCreateJoin ,CommunityController.addCommunity)
 // router.get('/', CommunityController.showCommunity)
-router.get('/community', CommunityController.findOne)
+router.get('/', CommunityController.findOne)
 // router.delete('/:communityId', CommunityController.deleteCommunity)
 router.patch('/:communityId', AuthorizationCreateJoin ,CommunityController.joinCommunity)
 router.put('/approval/:userId', AuthorizationApproveMember,CommunityController.approveWaitingList)
 router.patch('/approval/:userId', AuthorizationApproveMember,CommunityController.rejectWaiting)
-router.post('/events/', CommunityController.createEvent)
-router.delete('/events/:eventId', CommunityController.deleteEvent)
+router.post('/events/', AuthorizationCreateEvent,CommunityController.createEvent)
+router.delete('/events/:eventId', AuthorizationCreateEvent,CommunityController.deleteEvent)
 
 
 module.exports = router

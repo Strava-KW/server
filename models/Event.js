@@ -3,9 +3,13 @@ const { Schema } = mongoose
 
 
 const eventSchema = new Schema({
-  location: {
+  name: {
     type: String,
     required: [true, "Event name should not be empty"]
+  },
+  location: {
+    type: String,
+    required: [true, "Event location should not be empty"]
   },
   date: {
     type: Date,
