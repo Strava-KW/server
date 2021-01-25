@@ -42,7 +42,7 @@ class UserController {
               id: result._id,
               email: result.email,
               role: result.role,
-              communityId: result.communityId,
+              communityId: result.communityId
             };
             res.status(200).json({ access_token: createToken(obj) });
             console.log("checked pass");
@@ -95,9 +95,11 @@ class UserController {
       }
     })
     .then(user => {
-      const access_token = generateToken({
+      const access_token = createToken({
         id: user._id,
-        email: user.email
+        email: user.email,
+        role: user.role,
+        communityId: user.communityId,
       })
       console.log(access_token)
       res.status(200).json({
