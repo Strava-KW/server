@@ -4,11 +4,10 @@ const app = express();
 const router = require("./routes");
 const cors = require('cors')
 const errorHandler = require("./middlewares/errorHandling");
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const url =
-// "mongodb://localhost:27017/Runator";
-// mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoose = require("mongoose");
+const url =
+"mongodb://localhost:27017/Runator";
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
