@@ -138,7 +138,7 @@ class UserController {
       .then(data => {
         if (data.members) {
           let members = data.members.map(member => {
-            if (member._id === req.loggedInUser.id){
+            if (member._id.toString() === req.loggedInUser.id.toString()){
               return {
                 _id: member._id,
                 email: member.email,
