@@ -64,7 +64,7 @@ afterEach(done => {
   Community.findOneAndDelete({name: "Lalala"})
     .exec()
     .then(_ => {
-      return User.findOneAndDelete({name: "Agnes"})
+      return User.findOneAndDelete({email: "agnes@mail.com"})
       .exec()
     })
     .then(_ => {

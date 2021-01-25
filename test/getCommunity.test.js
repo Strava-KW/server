@@ -59,8 +59,8 @@ beforeEach(done => {
   .then(data => {
     access_token_userWaiting = jwt.sign({id: data._id, email: data.email, role: data.role, communityId: data.communityId}, process.env.SECRET_JWT)
     return new User ({
-      fullname: "Pravida",
-      email: "pravida@mail.com",
+      fullname: "Irlitashanty",
+      email: "irlitashanty@mail.com",
       password: "qweqwe",
       communityId: null,
       history: [],
@@ -78,6 +78,29 @@ beforeEach(done => {
   })
 })
 
+afterEach(done => {
+  Community.findOneAndDelete({name: "Lalala"})
+    .exec()
+    .then(data => {
+      return User.findOneAndDelete({email: "agnes@mail.com"})
+      .exec()
+    })
+    .then(data => {
+      return User.findOneAndDelete({email: "pravida@mail.com"})
+      .exec()
+    })
+    .then(data => {
+      return User.findOneAndDelete({email: "irlitashanty@mail.com"})
+      .exec()
+    })
+    .then(_ => {
+      done()
+    })
+    .catch(err => {
+      done(err)
+    })
+})
+
 afterAll (async (done) => {
   await db.dropCollection("users")
   await db.dropCollection("communities")
@@ -85,3 +108,31 @@ afterAll (async (done) => {
 })
 
 
+describe("Success get community", () => {
+  describe("Successfully get community", () => {
+    test("If user has waiting role", done => {
+      request(app)
+        .get(`/community/`)
+        .set("access_token", access_token_userWaiting)
+        .end((err, res) => {
+          const { body, status } = res
+          if (err) return done (err)
+          expect(status).toBe(200)
+          expect(body).toHaveProperty("message", "Your request for join community has been sent")
+          done()
+        })
+    })
+    test("If user has admin role", done => {
+      request(app)
+        .get(`/community/`)
+        .set("access_token", access_token_admin)
+        .end((err, res) => {
+          const { body, status } = res
+          if (err) return done (err)
+          expect(status).toBe(200)
+          expect(body).toHaveProperty("name", "Lalala")
+          done()
+        })
+    })
+  })
+})

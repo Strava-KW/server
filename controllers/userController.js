@@ -85,6 +85,7 @@ class UserController {
         }
         else {
           return {
+            status: 200,
             message : "Track history added successfully"
           }
         }
@@ -110,6 +111,7 @@ class UserController {
         }
         else {
           return {
+            status: 200,
             message: "Track history added successfully"
           }
         }
