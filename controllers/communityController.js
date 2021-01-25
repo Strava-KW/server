@@ -23,16 +23,15 @@ class CommunityController {
                 community
                 .save()
                 .then(data => {
-                    res.status(201).json({
-                        communityName: data.name 
-                    })
                     req.loggedInUser.communityId = data._id
                     return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id}, {new: true, useFindAndModify: false})
                     .exec()
                 })
             })
             .then(_ => {
-                console.log("Updated")
+                res.status(200).json({
+                    message: "User is an admin now"
+                })
             })
             .catch(error => {
                 next(error)
