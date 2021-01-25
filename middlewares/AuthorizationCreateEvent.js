@@ -1,7 +1,6 @@
 const User = require('../models/User')
 
 module.exports = (req, res, next) => {
-  console.log("hei")
   User.findOne({_id: req.loggedInUser.id})
     .exec()
     .then(data => {
