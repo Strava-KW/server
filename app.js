@@ -5,8 +5,7 @@ const router = require("./routes");
 const cors = require('cors')
 const errorHandler = require("./middlewares/errorHandling");
 const mongoose = require("mongoose");
-const url =
-"mongodb://localhost:27017/Runator";
+const url = process.env.MONGODB_URL || "mongodb://localhost:27017/Runator";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 app.use(cors());
 app.use(express.json());
