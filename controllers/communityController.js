@@ -246,11 +246,6 @@ class CommunityController {
     }
 
     static deleteEvent (req, res, next) {
-        // cari user dengan loggedIn id
-        // cari community dengan hasil balikan communityId
-        // cari apakah di community tersebut ada event dengan id event
-        // jika ada, maka event dihilangkan dari array event
-        // event dihilangkan dari tabel event
         User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
@@ -280,7 +275,9 @@ class CommunityController {
                     .exec()
             })
             .then(_ => {
-                res.status(200).json("event deleted")
+                res.status(200).json({
+                    message: "Deleted"
+                })
             })
             .catch(err => {
                 next(err)

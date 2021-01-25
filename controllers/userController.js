@@ -83,25 +83,37 @@ class UserController {
           return Community.findOne({_id: userCommunity})
             .exec()
         }
+        else {
+          return {
+            message : "Track history added successfully"
+          }
+        }
       })
       .then(data => {
-        let members = data.members.map(member => {
-          if (member._id === req.loggedInUser.id){
-            return {
-              _id: member._id,
-              email: member.email,
-              fullname: member.fullname,
-              totalRange: member.totalRange + Number(req.body.distance),
-              role: member.role
+        if (data.members) {
+          let members = data.members.map(member => {
+            if (member._id === req.loggedInUser.id){
+              return {
+                _id: member._id,
+                email: member.email,
+                fullname: member.fullname,
+                totalRange: member.totalRange + Number(req.body.distance),
+                role: member.role
+              }
             }
+            else {
+              return member
+            }
+          })
+          return Community.findOneAndUpdate({_id: data._id}, {members: members}, {useFindAndModify: false})
+            .exec()
+        }
+        else {
+          return {
+            message: "Track history added successfully"
           }
-          else {
-            return member
-          }
-        })
+        }
 
-        return Community.findOneAndUpdate({_id: data._id}, {members: members}, {useFindAndModify: false})
-          .exec()
       })
       .then(_ => {
         res.status(200).json({
