@@ -2,6 +2,8 @@ const User = require("../models/User");
 const Community = require("../models/Community")
 const { checkPassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 class UserController {
   static register(req, res, next) {
@@ -63,6 +65,49 @@ class UserController {
       });
   }
 
+  static googleLogin (req, res, next) {
+    let payload;
+    client.verifyIdToken({
+      idToken: req.body.google_token,
+      audience: process.env.GOOGLE_CLIENT_ID
+    })
+    .then(ticket => {
+      payload = ticket.getPayload()
+      
+      return User.findOne({email: payload.email})
+        .exec()
+    })
+    .then(user => {
+      if(user){
+        return user
+      }
+      else {
+        new User ({
+          email: payload.email,
+          password: process.env.GOOGLE_PASSWORD,
+          fullname: payload.name,
+          history: [],
+          totalRange: 0,
+          role: null,
+          communityId: null
+        })
+        .save()
+      }
+    })
+    .then(user => {
+      const access_token = generateToken({
+        id: user._id,
+        email: user.email
+      })
+      console.log(access_token)
+      res.status(200).json({
+        access_token: access_token
+      })
+    })
+    .catch(err => {
+      next(err)
+    })
+  }
   static trackHistory (req, res, next) {
     let userCommunity
     User.findOne({_id: req.loggedInUser.id})
@@ -93,7 +138,7 @@ class UserController {
       .then(data => {
         if (data.members) {
           let members = data.members.map(member => {
-            if (member._id === req.loggedInUser.id){
+            if (member._id.toString() === req.loggedInUser.id.toString()){
               return {
                 _id: member._id,
                 email: member.email,

@@ -138,8 +138,8 @@ describe ("Create community", () => {
         .end((err, res) => {
           const { body, status } = res
           if (err) return done (err)
-          expect(status).toBe(201)
-          expect(body).toHaveProperty("communityName", "Lalala")
+          expect(status).toBe(200)
+          expect(body).toHaveProperty("message", "User is an admin now")
           done()
         })
     })

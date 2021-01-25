@@ -5,7 +5,7 @@ const Event = require('../models/Event')
 class CommunityController {
 
     static addCommunity (req, res, next) {
-        User.findOneAndUpdate({_id: req.loggedInUser.id}, {role: "admin"}, {new: true, useFindAndModify: false})
+        User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
                 let community = new Community ({
@@ -23,16 +23,15 @@ class CommunityController {
                 community
                 .save()
                 .then(data => {
-                    res.status(201).json({
-                        communityName: data.name 
-                    })
                     req.loggedInUser.communityId = data._id
-                    return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id}, {new: true, useFindAndModify: false})
+                    return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id, role: "admin"}, {new: true, useFindAndModify: false})
                     .exec()
                 })
             })
             .then(_ => {
-                console.log("Updated")
+                res.status(200).json({
+                    message: "User is an admin now"
+                })
             })
             .catch(error => {
                 next(error)
