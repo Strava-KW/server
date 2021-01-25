@@ -101,7 +101,6 @@ describe("Success, track running path", () => {
     })
     .end((err, res) => {
       const { body, status } = res
-      console.log(body)
       if (err) return done (err)
       expect(status).toBe(200)
       expect(body).toHaveProperty("message", "Track history added successfully")
@@ -118,7 +117,6 @@ describe("Success, track running path", () => {
     })
     .end((err, res) => {
       const { body, status } = res
-      console.log(body)
       if (err) return done (err)
       expect(status).toBe(200)
       expect(body).toHaveProperty("message", "Track history added successfully")
