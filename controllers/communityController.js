@@ -5,7 +5,7 @@ const Event = require('../models/Event')
 class CommunityController {
 
     static addCommunity (req, res, next) {
-        User.findOneAndUpdate({_id: req.loggedInUser.id}, {role: "admin"}, {new: true, useFindAndModify: false})
+        User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
                 let community = new Community ({
@@ -24,7 +24,7 @@ class CommunityController {
                 .save()
                 .then(data => {
                     req.loggedInUser.communityId = data._id
-                    return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id}, {new: true, useFindAndModify: false})
+                    return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id, role: "admin"}, {new: true, useFindAndModify: false})
                     .exec()
                 })
             })
