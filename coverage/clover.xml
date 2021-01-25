@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611491626352" clover="3.2.0">
-  <project timestamp="1611491626353" name="All files">
-    <metrics statements="224" coveredstatements="193" conditionals="38" coveredconditionals="27" methods="67" coveredmethods="51" elements="329" coveredelements="271" complexity="0" loc="224" ncloc="224" packages="6" files="17" classes="17"/>
+<coverage generated="1611538296862" clover="3.2.0">
+  <project timestamp="1611538296862" name="All files">
+    <metrics statements="239" coveredstatements="194" conditionals="42" coveredconditionals="27" methods="74" coveredmethods="51" elements="355" coveredelements="272" complexity="0" loc="239" ncloc="239" packages="6" files="17" classes="17"/>
     <package name="server">
       <metrics statements="16" coveredstatements="10" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="app.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/app.js">
@@ -28,7 +28,7 @@
       </file>
     </package>
     <package name="server.controllers">
-      <metrics statements="96" coveredstatements="73" conditionals="18" coveredconditionals="10" methods="49" coveredmethods="34"/>
+      <metrics statements="111" coveredstatements="74" conditionals="22" coveredconditionals="10" methods="56" coveredmethods="34"/>
       <file name="communityController.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/controllers/communityController.js">
         <metrics statements="76" coveredstatements="53" conditionals="14" coveredconditionals="6" methods="43" coveredmethods="28"/>
         <line num="1" count="7" type="stmt"/>
@@ -109,27 +109,42 @@
         <line num="290" count="7" type="stmt"/>
       </file>
       <file name="userController.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/controllers/userController.js">
-        <metrics statements="20" coveredstatements="20" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+        <metrics statements="35" coveredstatements="21" conditionals="8" coveredconditionals="4" methods="13" coveredmethods="6"/>
         <line num="1" count="7" type="stmt"/>
         <line num="2" count="7" type="stmt"/>
         <line num="3" count="7" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="35" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="37" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="36" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="61" count="2" type="stmt"/>
-        <line num="87" count="7" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="62" count="2" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="82" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="112" count="0" type="stmt"/>
+        <line num="138" count="7" type="stmt"/>
       </file>
     </package>
     <package name="server.helpers">

@@ -8,7 +8,8 @@ const UserController = require('../controllers/userController')
 router.use('/users', UserRouter)
 
 router.use(Authentication)
-router.get('/profile',)
+router.get('/profile', UserController.getProfile)
+router.post('/history', UserController.trackHistory)
 router.use('/community', CommunityRouter)
 
 module.exports = router
