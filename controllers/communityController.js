@@ -15,7 +15,7 @@ class CommunityController {
                         email: data.email,
                         fullname: data.fullname,
                         totalRange: data.totalRange,
-                        role: data.role
+                        role: "admin"
                     }],
                     waitingList: [],
                     events: []
