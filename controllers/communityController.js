@@ -5,7 +5,7 @@ const Event = require('../models/Event')
 class CommunityController {
 
     static addCommunity (req, res, next) {
-        User.findOneAndUpdate({_id: req.loggedInUser.id}, {role: "admin"}, {new: true, useFindAndModify: false})
+        User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
                 let community = new Community ({
@@ -15,7 +15,7 @@ class CommunityController {
                         email: data.email,
                         fullname: data.fullname,
                         totalRange: data.totalRange,
-                        role: data.role
+                        role: "admin"
                     }],
                     waitingList: [],
                     events: []
@@ -23,16 +23,15 @@ class CommunityController {
                 community
                 .save()
                 .then(data => {
-                    res.status(201).json({
-                        communityName: data.name 
-                    })
                     req.loggedInUser.communityId = data._id
-                    return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id}, {new: true, useFindAndModify: false})
+                    return User.findOneAndUpdate({_id: req.loggedInUser.id}, {communityId: data._id, role: "admin"}, {new: true, useFindAndModify: false})
                     .exec()
                 })
             })
             .then(_ => {
-                console.log("Updated")
+                res.status(200).json({
+                    message: "User is an admin now"
+                })
             })
             .catch(error => {
                 next(error)
@@ -246,11 +245,6 @@ class CommunityController {
     }
 
     static deleteEvent (req, res, next) {
-        // cari user dengan loggedIn id
-        // cari community dengan hasil balikan communityId
-        // cari apakah di community tersebut ada event dengan id event
-        // jika ada, maka event dihilangkan dari array event
-        // event dihilangkan dari tabel event
         User.findOne({_id: req.loggedInUser.id})
             .exec()
             .then(data => {
@@ -280,7 +274,9 @@ class CommunityController {
                     .exec()
             })
             .then(_ => {
-                res.status(200).json("event deleted")
+                res.status(200).json({
+                    message: "Deleted"
+                })
             })
             .catch(err => {
                 next(err)

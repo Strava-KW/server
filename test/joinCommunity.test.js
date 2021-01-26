@@ -104,8 +104,6 @@ describe ("Success join community", () => {
         .end((err, res) => {
           const { body, status } = res
           if (err) return done (err)
-          // console.log(communitySelected)
-          // console.log(userSelected)
           expect(status).toBe(200)
           expect(body).toHaveProperty("message", "Agnes request to join community has been sent")
           done()

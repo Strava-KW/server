@@ -17,7 +17,6 @@ beforeAll(done => {
 
 afterAll(async (done) => {
   await db.dropCollection("users")
-  // await mongoose.disconnect()
   done()
 })
 
