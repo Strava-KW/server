@@ -32,6 +32,7 @@ class UserController {
   }
 
   static login(req, res, next) {
+    console.log("masuk login")
     User.findOne({ email: req.body.email })
       .exec()
       .then((result) => {
@@ -69,11 +70,10 @@ class UserController {
     let payload;
     client.verifyIdToken({
       idToken: req.body.google_token,
-      audience: process.env.GOOGLE_CLIENT_ID
+      requiredAudience: "33938517114-lsqdhqjb66cu4l7qs7nlo7d7oaj14qfv.apps.googleusercontent.com"
     })
     .then(ticket => {
       payload = ticket.getPayload()
-      
       return User.findOne({email: payload.email})
         .exec()
     })
@@ -101,12 +101,12 @@ class UserController {
         role: user.role,
         communityId: user.communityId,
       })
-      console.log(access_token)
       res.status(200).json({
         access_token: access_token
       })
     })
     .catch(err => {
+      console.log(err)
       next(err)
     })
   }
