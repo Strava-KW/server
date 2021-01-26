@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611330424494" clover="3.2.0">
-  <project timestamp="1611330424495" name="All files">
-    <metrics statements="241" coveredstatements="71" conditionals="343" coveredconditionals="5" methods="79" coveredmethods="6" elements="663" coveredelements="82" complexity="0" loc="241" ncloc="241" packages="7" files="19" classes="19"/>
+<coverage generated="1611370430867" clover="3.2.0">
+  <project timestamp="1611370430867" name="All files">
+    <metrics statements="259" coveredstatements="68" conditionals="343" coveredconditionals="0" methods="91" coveredmethods="2" elements="693" coveredelements="70" complexity="0" loc="259" ncloc="259" packages="7" files="18" classes="18"/>
     <package name="server">
-      <metrics statements="16" coveredstatements="10" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="app.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/app.js">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="19" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="app.js" path="D:\Phase3\server\app.js">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
-      <file name="server.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/server.js">
+      <file name="server.js" path="D:\Phase3\server\server.js">
         <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -28,54 +31,70 @@
       </file>
     </package>
     <package name="server.controllers">
-      <metrics statements="37" coveredstatements="12" conditionals="10" coveredconditionals="3" methods="18" coveredmethods="3"/>
-      <file name="communityController.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/controllers/communityController.js">
-        <metrics statements="18" coveredstatements="2" conditionals="6" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <metrics statements="53" coveredstatements="10" conditionals="8" coveredconditionals="0" methods="28" coveredmethods="2"/>
+      <file name="communityController.js" path="D:\Phase3\server\controllers\communityController.js">
+        <metrics statements="27" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="43" count="0" type="stmt"/>
         <line num="45" count="0" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="90" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
       </file>
-      <file name="userController.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/controllers/userController.js">
-        <metrics statements="19" coveredstatements="10" conditionals="4" coveredconditionals="3" methods="9" coveredmethods="3"/>
+      <file name="userController.js" path="D:\Phase3\server\controllers\userController.js">
+        <metrics statements="26" coveredstatements="7" conditionals="4" coveredconditionals="0" methods="12" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="36" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
-        <line num="61" count="3" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="91" count="1" type="stmt"/>
       </file>
     </package>
     <package name="server.coverage.lcov-report">
       <metrics statements="106" coveredstatements="0" conditionals="323" coveredconditionals="0" methods="52" coveredmethods="0"/>
-      <file name="block-navigation.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/coverage/lcov-report/block-navigation.js">
+      <file name="block-navigation.js" path="D:\Phase3\server\coverage\lcov-report\block-navigation.js">
         <metrics statements="28" coveredstatements="0" conditionals="15" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -106,11 +125,11 @@
         <line num="75" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
       </file>
-      <file name="prettify.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/coverage/lcov-report/prettify.js">
+      <file name="prettify.js" path="D:\Phase3\server\coverage\lcov-report\prettify.js">
         <metrics statements="1" coveredstatements="0" conditionals="286" coveredconditionals="0" methods="29" coveredmethods="0"/>
         <line num="2" count="0" type="cond" truecount="0" falsecount="286"/>
       </file>
-      <file name="sorter.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/coverage/lcov-report/sorter.js">
+      <file name="sorter.js" path="D:\Phase3\server\coverage\lcov-report\sorter.js">
         <metrics statements="77" coveredstatements="0" conditionals="22" coveredconditionals="0" methods="17" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
@@ -192,14 +211,14 @@
       </file>
     </package>
     <package name="server.helpers">
-      <metrics statements="12" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
-      <file name="bcrypt.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/helpers/bcrypt.js">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="12" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="bcrypt.js" path="D:\Phase3\server\helpers\bcrypt.js">
+        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
       </file>
-      <file name="jwt.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/helpers/jwt.js">
+      <file name="jwt.js" path="D:\Phase3\server\helpers\jwt.js">
         <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -208,7 +227,7 @@
         <line num="10" count="0" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="verifyPassword.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/helpers/verifyPassword.js">
+      <file name="verifyPassword.js" path="D:\Phase3\server\helpers\verifyPassword.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -216,9 +235,9 @@
       </file>
     </package>
     <package name="server.middlewares">
-      <metrics statements="25" coveredstatements="7" conditionals="8" coveredconditionals="2" methods="3" coveredmethods="1"/>
-      <file name="Authentication.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/middlewares/Authentication.js">
-        <metrics statements="14" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="34" coveredstatements="6" conditionals="10" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <file name="Authentication.js" path="D:\Phase3\server\middlewares\Authentication.js">
+        <metrics statements="15" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -229,76 +248,71 @@
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="18" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
       </file>
-      <file name="errorHandling.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/middlewares/errorHandling.js">
-        <metrics statements="11" coveredstatements="4" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="1"/>
-        <line num="2" count="3" type="cond" truecount="1" falsecount="1"/>
+      <file name="AuthorizationCreateJoin.js" path="D:\Phase3\server\middlewares\AuthorizationCreateJoin.js">
+        <metrics statements="8" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+      <file name="errorHandling.js" path="D:\Phase3\server\middlewares\errorHandling.js">
+        <metrics statements="11" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="10" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="11" count="3" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
       </file>
     </package>
     <package name="server.models">
-      <metrics statements="21" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="Community.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/models/Community.js">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="community.js" path="D:\Phase3\server\models\community.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-      </file>
-      <file name="User.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/models/User.js">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
       </file>
-      <file name="community.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/models/community.js">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-      </file>
-      <file name="user.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/models/user.js">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+      <file name="user.js" path="D:\Phase3\server\models\user.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
       </file>
     </package>
     <package name="server.routes">
-      <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="communityRouter.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/routes/communityRouter.js">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="communityRouter.js" path="D:\Phase3\server\routes\communityRouter.js">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
       </file>
-      <file name="index.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/routes/index.js">
+      <file name="index.js" path="D:\Phase3\server\routes\index.js">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -310,15 +324,16 @@
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
-      <file name="userRouter.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/routes/userRouter.js">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="userRouter.js" path="D:\Phase3\server\routes\userRouter.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
       </file>
     </package>
   </project>
