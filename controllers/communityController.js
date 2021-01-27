@@ -12,6 +12,7 @@ class CommunityController {
                     name: req.body.name,
                     members: [{
                         _id: data._id,
+                        picture: data.picture,
                         email: data.email,
                         fullname: data.fullname,
                         totalRange: data.totalRange,
@@ -90,7 +91,8 @@ class CommunityController {
                     email: data.email,
                     fullname: data.fullname,
                     totalRange: data.totalRange,
-                    role: data.role
+                    role: data.role,
+                    picture: data.picture
                 })
                 return Community.findOneAndUpdate ({_id: chosenCommunity._id}, {waitingList: chosenCommunity.waitingList}, {new: true, useFindAndModify: false})
                     .exec()
@@ -138,7 +140,8 @@ class CommunityController {
                     email: data.email,
                     fullname: data.fullname,
                     totalRange: data.totalRange,
-                    role: data.role
+                    role: data.role,
+                    picture: data.picture
                 })
                 return Community.findOneAndUpdate({_id: req.loggedInUser.communityId}, {waitingList: waitingList, members: members}, {new: true, useFindAndModify: false})
             })

@@ -3,6 +3,9 @@ const { Schema } = mongoose
 const bcrypt = require('bcryptjs')
 
 const userSchema = new Schema({
+  picture: {
+    type: String
+  },
   fullname: {
     type: String,
     required: [true, "Fullname should not be empty"],
