@@ -4,31 +4,37 @@ const { checkPassword } = require("../helpers/bcrypt");
 const { createToken } = require("../helpers/jwt");
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const axios = require('axios')
 
 class UserController {
   static register(req, res, next) {
-    console.log(req.body);
-    const user = new User({
-      fullname: req.body.fullname,
-      email: req.body.email,
-      password: req.body.password,
-      history: [],
-      totalRange: 0,
-      role: null,
-      communityId: null,
-    });
-    user
-      .save()
-      .then((data) => {
-        res.status(201).json({
-          fullname: data.fullname,
-          email: data.email,
-          _id: data._id,
-        });
-      })
-      .catch((err) => {
-        next(err);
+    axios.get('https://randomuser.me/api/')
+    .then(res => {
+      let picture = res.data.results[0].picture.thumbnail
+      const user = new User({
+        picture: picture,
+        fullname: req.body.fullname,
+        email: req.body.email,
+        password: req.body.password,
+        history: [],
+        totalRange: 0,
+        role: null,
+        communityId: null,
       });
+      return user
+        .save()
+    })
+    .then((data) => {
+      res.status(201).json({
+        picture: data.picture,
+        fullname: data.fullname,
+        email: data.email,
+        _id: data._id,
+      });
+    })
+    .catch(err => {
+      next(err)
+    })
   }
 
   static login(req, res, next) {
@@ -83,6 +89,7 @@ class UserController {
       }
       else {
         new User ({
+          picture: payload.picture,
           email: payload.email,
           password: process.env.GOOGLE_PASSWORD,
           fullname: payload.name,
