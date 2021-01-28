@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611723141511" clover="3.2.0">
-  <project timestamp="1611723141511" name="All files">
-    <metrics statements="257" coveredstatements="235" conditionals="44" coveredconditionals="38" methods="82" coveredmethods="70" elements="383" coveredelements="343" complexity="0" loc="257" ncloc="257" packages="6" files="16" classes="16"/>
+<coverage generated="1611794462934" clover="3.2.0">
+  <project timestamp="1611794462934" name="All files">
+    <metrics statements="256" coveredstatements="234" conditionals="44" coveredconditionals="38" methods="82" coveredmethods="70" elements="382" coveredelements="342" complexity="0" loc="256" ncloc="256" packages="6" files="16" classes="16"/>
     <package name="server">
-      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.js" path="/home/agnespravida/Hacktiv8/phase3/strava/server/app.js">
-        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="11" type="stmt"/>
         <line num="2" count="11" type="stmt"/>
         <line num="3" count="11" type="stmt"/>
         <line num="4" count="11" type="stmt"/>
         <line num="5" count="11" type="stmt"/>
         <line num="6" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
         <line num="10" count="11" type="stmt"/>
         <line num="11" count="11" type="stmt"/>
         <line num="12" count="11" type="stmt"/>

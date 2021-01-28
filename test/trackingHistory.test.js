@@ -22,7 +22,10 @@ beforeAll((done) => {
 beforeEach(done => {
   new Community ({
     name: "Lalala",
-    members: [],
+    members: [{
+      _id: "123",
+      fullname: "Lala"
+    }],
     waitingList: [],
     events: []
   })
